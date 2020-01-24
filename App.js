@@ -1,54 +1,40 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image } from 'react-native';
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-    
-      <Text style={styles.bigBlue}> Viduth Tennakoon</Text>
-      
+// You can import from local files
+import AssetExample from './components/AssetExample';
 
-      <Image source={require('./1.jpg')} style={{ width: 250, height: 250 }} />
+// or any pure javascript modules available in npm
+import { Card } from 'react-native-paper';
 
-      <Text>
-        My name is Viduth, im a college student at AMDT, i live in kadawatha, i
-        love videography, my hobbie is collecting moments. This is my 1st mobile
-        app project.{' '}
-      </Text>
-
-      <Button
-        title="Press me"
-        onPress={() => Alert.alert('Viduth Tennakoon')}
-      />
-
-      <Image
-        style={{ width: 50, height: 50 }}
-        source={require('@expo/snack-static/react-native-logo.png')}
-      />
-
-        <Text style={{fontWeight: 'bold'}}>
-        WUSS
-        <Text style={{color: 'red'}}>
-          GOODVIITO
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Change code in the editor and watch it change on your phone! Save to get a shareable url.
         </Text>
-      </Text>
-
-
-    </View>
-  );
+        <Card>
+          <AssetExample />
+        </Card>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-
-    alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
   },
-  bigBlue: {
-    color: 'gold',
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    fontSize: 30,
-  }
+    textAlign: 'center',
+  },
 });
